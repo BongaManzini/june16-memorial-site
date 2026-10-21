@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #fff;
+  color: #333;
+}
+
+h1, h2 {
+  margin: 0;
+}
+
+.App {
+  overflow-x: hidden;
+}
+.section {
+  padding: 4rem 2rem;
+}
+
+.gallery {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.gallery img {
+  width: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+/* Add to App.css */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  background: #111;
+  color: white;
+}
