@@ -1,32 +1,119 @@
 /* src/components/Navbar.css */
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: rgba(12, 12, 14, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #27272a;
+  height: 68px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #111;
-  color: white;
-  padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 999;
 }
 
-.navbar .logo {
-  font-weight: bold;
-  font-size: 1.5rem;
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  cursor: pointer;
+  user-select: none;
 }
 
-.navbar ul {
+.logo-icon {
+  font-size: 1.6rem;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-title {
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+  line-height: 1.1;
+}
+
+.logo-subtitle {
+  font-size: 0.72rem;
+  color: #fbbf24;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.nav-links {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.4rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
 }
 
-.navbar li {
+.nav-links li {
+  color: #d4d4d8;
+  font-size: 0.88rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: color 0.3s;
+  padding: 6px 4px;
+  position: relative;
+  transition: color 0.2s ease;
 }
 
-.navbar li:hover {
-  color: #facc15;
+.nav-links li:hover {
+  color: #fbbf24;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+@media (max-width: 900px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: #121215;
+    border-bottom: 1px solid #27272a;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+    align-items: flex-start;
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    font-size: 1.05rem;
+    width: 100%;
+    padding: 8px 0;
+    border-bottom: 1px solid #202024;
+  }
 }

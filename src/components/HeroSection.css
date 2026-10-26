@@ -1,131 +1,219 @@
-/* HeroSection.css */
+/* src/components/HeroSection.css */
 .hero-container {
   position: relative;
-  height: 100vh;
-  min-height: 600px;
-  background: url('https://www.sahistory.org.za/sites/default/files/styles/square_medium/public/images/archive/soweto_uprising_1976.jpg') no-repeat center center;
-  background-size: cover;
-  color: white;
+  min-height: 92vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  overflow: hidden;
+  background-color: #0c0c0e;
 }
 
-.hero-overlay {
+.hero-backdrop-img {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  filter: grayscale(85%) contrast(115%) brightness(40%);
+  transform: scale(1.02);
+  transition: transform 10s ease;
+}
+
+.hero-overlay-dark {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 92vh;
+  background: radial-gradient(circle at center, rgba(12, 12, 14, 0.72) 0%, rgba(12, 12, 14, 0.94) 85%);
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 5rem 1.5rem 4rem 1.5rem;
 }
 
-.hero-content {
-  max-width: 1200px;
-  padding: 0 20px;
-  animation: fadeIn 1.5s ease-out;
+.hero-content-shell {
+  max-width: 960px;
+  text-align: center;
+  color: #ffffff;
+  z-index: 2;
+  animation: heroFadeIn 1s ease-out;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.hero-content h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+.hero-kicker-badge {
+  display: inline-block;
+  background: rgba(217, 119, 6, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
+
+.hero-headline {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0 0 1.2rem 0;
+  letter-spacing: -0.5px;
 }
 
 .hero-tagline {
-  font-size: 1.5rem;
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: #d4d4d8;
   max-width: 800px;
-  margin: 0 auto 3rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  margin: 0 auto 2.2rem auto;
 }
 
-.hero-highlights {
+/* Metrics Row */
+.hero-metrics-row {
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  margin: 3rem auto;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.2rem;
+}
+
+.hero-metric-card {
+  background: rgba(24, 24, 27, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid #27272a;
+  border-radius: 8px;
+  padding: 1.2rem 1.5rem;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-metric-card:hover {
+  transform: translateY(-3px);
+  border-color: #fbbf24;
+}
+
+.hero-metric-card.highlight-card {
+  border-top: 3px solid #d97706;
+}
+
+.metric-number {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #fbbf24;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.metric-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.2rem;
+}
+
+.metric-detail {
+  font-size: 0.78rem;
+  color: #a1a1aa;
+}
+
+/* Quote */
+.hero-quote-container {
+  max-width: 780px;
+  margin: 0 auto 2.4rem auto;
+  background: rgba(24, 24, 27, 0.65);
+  border-left: 3px solid #d97706;
+  padding: 1.1rem 1.4rem;
+  border-radius: 0 8px 8px 0;
+  text-align: left;
+}
+
+.hero-quote-container blockquote {
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: #fef3c7;
+  margin: 0 0 0.5rem 0;
+}
+
+.hero-quote-container cite {
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 600;
+  color: #fbbf24;
+  display: block;
+}
+
+/* Action Buttons */
+.hero-actions-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
-.hero-card {
-  background: rgba(231, 76, 60, 0.8); /* Red color */
-  padding: 1.5rem;
-  border-radius: 8px;
-  max-width: 300px;
-  transition: transform 0.3s ease;
-}
-
-.hero-card:hover {
-  transform: translateY(-5px);
-}
-
-.hero-card h3 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-}
-
-.hero-quote {
-  max-width: 800px;
-  margin: 3rem auto;
-  font-style: italic;
-}
-
-.hero-quote blockquote {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-}
-
-.hero-button {
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-  padding: 12px 30px;
-  font-size: 1.1rem;
-  border-radius: 50px;
+.hero-btn-primary {
+  background: #d97706;
+  color: #111114;
+  border: none;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 2rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.35);
 }
 
-.hero-button:hover {
-  background: rgba(255, 255, 255, 0.2);
+.hero-btn-primary:hover {
+  background: #f59e0b;
+  transform: translateY(-2px);
 }
 
-/* Responsive Design */
+.hero-btn-secondary {
+  background: rgba(24, 24, 27, 0.85);
+  color: #f4f4f5;
+  border: 1px solid #3f3f46;
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hero-btn-secondary:hover {
+  background: #27272a;
+  border-color: #fbbf24;
+  color: #fbbf24;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2.5rem;
+  .hero-headline {
+    font-size: 2.2rem;
   }
-  
   .hero-tagline {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
-  
-  .hero-card {
-    max-width: 100%;
-    width: 100%;
-  }
-  
-  .hero-quote blockquote {
-    font-size: 1.1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-  
-  .hero-highlights {
+  .hero-metrics-row {
     flex-direction: column;
+    gap: 0.8rem;
+  }
+  .hero-actions-row {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .hero-btn-primary, .hero-btn-secondary {
+    width: 100%;
   }
 }

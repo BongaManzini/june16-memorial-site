@@ -1,0 +1,55 @@
+/* src/components/TimelineD3Track.css */
+.d3-track-container {
+  width: 100%;
+  max-width: 980px;
+  margin: 1.5rem auto 2.5rem auto;
+  background: rgba(24, 24, 27, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1rem 1.4rem 0.5rem 1.4rem;
+  backdrop-filter: blur(8px);
+}
+
+.d3-track-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.2rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.d3-track-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: #fbbf24;
+  text-transform: uppercase;
+}
+
+.d3-track-current {
+  font-size: 0.8rem;
+  color: #d4d4d8;
+  font-weight: 600;
+}
+
+.d3-track-svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+.d3-node circle {
+  transition: r 0.2s ease, fill 0.2s ease, stroke 0.2s ease;
+}
+
+.d3-node:hover circle {
+  fill: #fbbf24;
+  r: 8;
+}
+
+@media (max-width: 640px) {
+  .d3-track-container {
+    padding: 0.8rem 0.8rem 0.4rem 0.8rem;
+  }
+}

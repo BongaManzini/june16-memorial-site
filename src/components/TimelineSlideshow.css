@@ -1,0 +1,143 @@
+/* src/components/TimelineSlideshow.css */
+.slideshow-box {
+  width: 100%;
+  background: #18181b;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  margin: 1rem 0;
+  border: 1px solid #27272a;
+}
+
+.slideshow-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  background: #09090b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.slideshow-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.slideshow-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 1.1rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 4;
+}
+
+.slideshow-arrow:hover {
+  background: #d97706;
+  border-color: #d97706;
+  color: #111;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.slideshow-prev {
+  left: 10px;
+}
+
+.slideshow-next {
+  right: 10px;
+}
+
+.slideshow-counter {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fbbf24;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  letter-spacing: 0.5px;
+  z-index: 4;
+}
+
+.slideshow-caption-area {
+  padding: 1rem 1.1rem;
+  background: #18181b;
+  color: #e4e4e7;
+}
+
+.slideshow-slide-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fbbf24;
+  margin: 0 0 0.4rem 0;
+}
+
+.slideshow-caption-text {
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: #d4d4d8;
+  margin: 0 0 0.5rem 0;
+}
+
+.slideshow-credit-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: #a1a1aa;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.slideshow-dots-row {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #27272a;
+}
+
+.slideshow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: #52525b;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.slideshow-dot.active {
+  background: #fbbf24;
+  width: 22px;
+  border-radius: 4px;
+}
+
+.slideshow-dot:hover {
+  background: #d4d4d8;
+}
+
+@media (max-width: 640px) {
+  .slideshow-image-wrapper {
+    height: 200px;
+  }
+}

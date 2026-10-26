@@ -1,103 +1,157 @@
+/* src/components/AboutSection.css */
 .about-section {
-  padding: 3rem 2rem;
-  max-width: 1200px;
+  padding: 4.5rem 1.5rem;
+  background: #121215;
+  color: #f4f4f5;
+  border-top: 1px solid #27272a;
+}
+
+.about-container {
+  max-width: 900px;
   margin: 0 auto;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.about-section h2 {
-  color: #e74c3c;
+.about-header {
   text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
 }
 
-.about-content {
-  display: flex;
-  gap: 3rem;
+.about-kicker {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #fbbf24;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
 }
 
-.about-text {
-  flex: 2;
+.about-title {
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.25;
 }
 
-.about-image {
-  flex: 1;
+.about-bio-card {
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 2.2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.about-lead {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #f4f4f5;
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+}
+
+.about-bio-card p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #d4d4d8;
+  margin-bottom: 0;
+}
+
+.about-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.about-feature-box {
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 8px;
+  padding: 1.4rem;
   display: flex;
   flex-direction: column;
 }
 
-.about-image img {
-  width: 100%;
-  border-radius: 6px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+.feature-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.6rem;
 }
 
-.caption {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: #666;
+.about-feature-box h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fbbf24;
+  margin: 0 0 0.4rem 0;
+}
+
+.about-feature-box p {
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: #a1a1aa;
+  margin: 0;
+}
+
+.about-connect-box {
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 10px;
+  padding: 1.8rem;
+  margin-bottom: 2.5rem;
   text-align: center;
 }
 
-h3 {
-  color: #2c3e50;
-  margin-top: 1.5rem;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 0.5rem;
+.about-connect-box h3 {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
 }
 
-.key-figures {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin: 1.5rem 0;
+.about-connect-box p {
+  color: #a1a1aa;
+  font-size: 0.92rem;
+  margin: 0 auto 1.4rem auto;
+  max-width: 650px;
 }
 
-.figure {
-  background: white;
-  padding: 1rem;
+.about-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.about-social-btn {
+  background: #202024;
+  color: #f4f4f5;
+  text-decoration: none;
+  padding: 9px 16px;
   border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-size: 0.86rem;
+  font-weight: 600;
+  border: 1px solid #3f3f46;
+  transition: all 0.2s ease;
 }
 
-.figure h4 {
-  color: #e74c3c;
-  margin-bottom: 0.5rem;
+.about-social-btn:hover {
+  background: #27272a;
+  color: #fbbf24;
+  border-color: #fbbf24;
+  transform: translateY(-2px);
 }
 
-@media (max-width: 768px) {
-  .about-content {
-    flex-direction: column;
+.about-badge-footer {
+  text-align: center;
+  color: #a1a1aa;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  .about-title {
+    font-size: 1.8rem;
   }
-  
-  .about-image {
-    order: -1;
-    margin-bottom: 2rem;
+  .about-bio-card {
+    padding: 1.3rem;
   }
-}
-.about-section {
-  padding: 3rem 1rem;
-  background-color: #f5f5f5;
-  color: #333;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.about-container {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.about-container h2,
-.about-container h3 {
-  color: #d32f2f;
-  margin-bottom: 0.5rem;
-}
-
-.about-container p {
-  margin-bottom: 1rem;
-  line-height: 1.6;
 }

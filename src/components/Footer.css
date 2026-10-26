@@ -1,0 +1,104 @@
+/* src/components/Footer.css */
+.memorial-footer {
+  background: #09090b;
+  color: #a1a1aa;
+  border-top: 1px solid #27272a;
+  padding: 4rem 1.5rem 2rem 1.5rem;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-top-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.2fr;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.footer-brand-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.footer-brand-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #a1a1aa;
+}
+
+.footer-group-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fbbf24;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.footer-links-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-links-group li {
+  font-size: 0.88rem;
+  cursor: pointer;
+  color: #d4d4d8;
+  transition: color 0.2s ease;
+}
+
+.footer-links-group li:hover {
+  color: #fbbf24;
+}
+
+.footer-quote-box blockquote {
+  font-size: 0.88rem;
+  font-style: italic;
+  color: #fef3c7;
+  border-left: 2px solid #d97706;
+  padding-left: 0.8rem;
+  margin: 0 0 0.8rem 0;
+  line-height: 1.5;
+}
+
+.footer-remembrance {
+  font-size: 0.82rem;
+  color: #71717a;
+  line-height: 1.5;
+}
+
+.footer-bottom-row {
+  border-top: 1px solid #1f1f23;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #71717a;
+}
+
+.footer-disclaimer {
+  max-width: 800px;
+  font-size: 0.75rem;
+  color: #52525b;
+}
+
+@media (max-width: 768px) {
+  .footer-top-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

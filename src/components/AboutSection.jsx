@@ -1,56 +1,87 @@
+// src/components/AboutSection.jsx
 import React from "react";
 import "./AboutSection.css";
 
-const AboutSection = () => {
+export default function AboutSection() {
   return (
     <section id="about" className="about-section">
       <div className="about-container">
-        <h2>About This Project</h2>
+        <div className="about-header">
+          <span className="about-kicker">EDUCATIONAL MEMORIAL INITIATIVE</span>
+          <h2 className="about-title">About This Memorial Platform</h2>
+        </div>
 
-        <p>
-          Hello! I'm <strong>Bonga Manzini</strong>, a BSc Informatics student passionate about technology, education, and cultural preservation. This website is a personal project built to honor the memory and legacy of <strong>June 16</strong> — a defining moment in South Africa’s history that reminds us of the power of youth voices and collective resistance.
-        </p>
+        <div className="about-bio-card">
+          <p className="about-lead">
+            Hello! I'm <strong>Bonga Manzini</strong>, a BSc Informatics student passionate about technology, historical education, and cultural preservation. This website is a dedicated digital memorial built to honor the memory and legacy of <strong>16 June 1976</strong> — a defining watershed in South Africa’s history that demonstrates the immortal courage of young people standing united against tyranny.
+          </p>
 
-        <p>
-          As someone deeply interested in using digital tools for storytelling and social awareness, I created this platform to educate and engage young South Africans with interactive content, history, and multimedia. It’s more than just a timeline — it's a tribute to the youth who fought for a better future.
-        </p>
+          <p>
+            As an informatics student, I believe digital tools have a sacred responsibility to preserve truth, combat historical amnesia, and provide young South Africans with open, verified access to their own heritage. This platform was developed to be <strong>rigorously accurate</strong>, bringing together published academic books, primary 1976 newspaper reports, Truth and Reconciliation Commission findings, and interactive visual timelines.
+          </p>
+        </div>
 
-        <h3>What This Website Offers</h3>
-        <ul>
-          <li>🕒 A visual, interactive timeline of June 16 events</li>
-          <li>🎥 Multimedia content (images, videos, audio)</li>
-          <li>🧠 Educational insights on the Soweto Uprising</li>
-          <li>📱 Responsive design for mobile & desktop</li>
-        </ul>
+        <div className="about-features-grid">
+          <div className="about-feature-box">
+            <span className="feature-icon">⏳</span>
+            <h4>Interactive Event Slideshows</h4>
+            <p>Every milestone on the timeline features dedicated archival photographs, document facsimiles, and eyewitness context.</p>
+          </div>
 
-        <h3>Why It Matters</h3>
-        <p>
-          Our generation has new tools — but the same responsibility: to fight for justice, equality, and truth. Remembering June 16 is not just about the past. It's about how we move forward.
-        </p>
+          <div className="about-feature-box">
+            <span className="feature-icon">📚</span>
+            <h4>Curated Academic Library</h4>
+            <p>Scholarly books, historical synopses, and direct links to institutions like South African History Online and Wits Archives.</p>
+          </div>
 
-        <h3>Connect With Me</h3>
-        <ul>
-          <li>
-            📧 Email: <a href="mailto:your.email@example.com">your.email@example.com</a>
-          </li>
-          <li>
-            💼 LinkedIn:{" "}
-            <a href="https://www.linkedin.com/in/bonga-manzini" target="_blank" rel="noopener noreferrer">
-              linkedin.com/in/bonga-manzini
+          <div className="about-feature-box">
+            <span className="feature-icon">📰</span>
+            <h4>Contemporary 1976 Press</h4>
+            <p>Front-page coverage and editorials from The World, Rand Daily Mail, The New York Times, and The Guardian.</p>
+          </div>
+
+          <div className="about-feature-box">
+            <span className="feature-icon">⚖️</span>
+            <h4>Verified Truth & Primary Sources</h4>
+            <p>Fact-checking historical myths against the Cillié Commission and TRC records, honoring Hastings Ndlovu, Hector Pieterson, and all fallen youth.</p>
+          </div>
+        </div>
+
+        <div className="about-connect-box">
+          <h3>Connect & Contribute</h3>
+          <p>
+            Historical preservation is an ongoing collaborative endeavor. If you have archival documents, oral histories, or feedback to share, please reach out:
+          </p>
+          <div className="about-links-row">
+            <a
+              href="https://www.linkedin.com/in/bonga-manzini"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="about-social-btn"
+            >
+              💼 LinkedIn: bonga-manzini
             </a>
-          </li>
-          <li>
-            💻 GitHub:{" "}
-            <a href="https://github.com/bongamanzini" target="_blank" rel="noopener noreferrer">
-              github.com/bongamanzini
+            <a
+              href="https://github.com/bongamanzini"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="about-social-btn"
+            >
+              💻 GitHub: bongamanzini
             </a>
-          </li>
-        </ul>
+            <a
+              href="mailto:contact@bongamanzini.co.za"
+              className="about-social-btn"
+            >
+              📧 Email Contact
+            </a>
+          </div>
+        </div>
 
-        <h4>Made with ❤️ in South Africa</h4>
+        <div className="about-badge-footer">
+          <span>Made with ❤️ & reverence in South Africa 🇿🇦</span>
+        </div>
       </div>
     </section>
   );
-};
-
-export default AboutSection;
+}

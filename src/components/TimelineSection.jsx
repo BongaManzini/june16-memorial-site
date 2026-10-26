@@ -1,124 +1,214 @@
-import React, { useState } from "react";
+// src/components/TimelineSection.jsx
+import React, { useState, useMemo, useEffect } from "react";
 import "./TimelineSection.css";
 import TimelineModal from "./TimelineModal";
+import TimelineSlideshow from "./TimelineSlideshow";
+import Timeline3DDeck from "./Timeline3DDeck";
+import TimelineD3Track from "./TimelineD3Track";
+import { timelineEvents, timelinePhases } from "../data/timelineData";
 
-const timelineData = [
-  {
-    year: "1953",
-    title: "Bantu Education Act",
-    description: "Apartheid government enforces inferior education for Black South Africans, limiting opportunities.",
-    media: "https://cdn.britannica.com/97/190497-050-D062A272/Uprising-Soweto-South-Africa-Demonstrators-state-medium-June-16-1976.jpg",
-    mediaType: "image",
-    additionalInfo: [
-      "Designed to prepare Black students for manual labor only",
-      "Schools were severely underfunded compared to white institutions"
-    ]
-  },
-  {
-    year: "1974",
-    title: "Afrikaans Language Decree",
-    description: "Government mandates Afrikaans (language of oppression) as medium of instruction in Black schools.",
-    media: "https://www.thoughtco.com/thmb/56lEjF3DFVwHEBlXAer4vG7geX4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/soweto-uprising-102096119-5ae5e989642dca0037d6f1ed.jpg",
-    mediaType: "image",
-    additionalInfo: [
-      "Required math and social studies to be taught in Afrikaans",
-      "Teachers and students saw this as cultural erasure"
-    ]
-  },
-  {
-    year: "June 16, 1976",
-    title: "Soweto Uprising Begins",
-    description: "20,000+ students protest peacefully; police open fire, killing hundreds including 12-year-old Hector Pieterson.",
-    media: "https://www.youtube.com/watch?v=NWGJcwpzKek",
-    mediaType: "video",
-    additionalInfo: [
-      "First shots fired near Orlando High School",
-      "Sam Nzima's photo of Hector Pieterson became global symbol",
-      "Official death toll: 176 | Actual estimates: 600+"
-    ]
-  },
-  {
-    year: "June 17-30, 1976",
-    title: "Nationwide Revolt",
-    description: "Protests spread to 100+ townships; government deploys army to suppress demonstrations.",
-    media: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNsr86febttbxf3jLzAaLXFsU6qb7I5DRQ_w&s",
-    mediaType: "image",
-    additionalInfo: [
-      "Students burned government buildings and symbols of apartheid",
-      "Thousands fled to join ANC/MK guerrillas in exile"
-    ]
-  },
-  {
-    year: "1977",
-    title: "Global Backlash",
-    description: "UN imposes arms embargo; Steve Biko dies in police custody, fueling international outrage.",
-    media: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWmbt_qACfgdKDJwMv3VMNflxDOiffPtYQXw&s",
-    mediaType: "image",
-    additionalInfo: [
-      "Anti-apartheid movements grew worldwide",
-      "Cultural boycotts isolated South Africa"
-    ]
-  },
-  {
-    year: "1994",
-    title: "Democracy Achieved",
-    description: "First democratic elections mark apartheid's end; June 16 declared Youth Day.",
-    media: "https://images.theconversation.com/files/271175/original/file-20190426-194627-1b59h5d.png?ixlib=rb-4.1.0&q=45&auto=format&w=926&fit=clip",
-    mediaType: "image",
-    additionalInfo: [
-      "Nelson Mandela becomes president",
-      "Hector Pieterson Museum opens in Soweto (2002)"
-    ]
-  },
-  {
-    year: "Present",
-    title: "Legacy Continues",
-    description: "Youth Day commemorates the uprising; modern activists draw inspiration from 1976.",
-    media: "data:image/jpeg;base64,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",
-    mediaType: "image",
-    additionalInfo: [
-      "Annual marches reenact the 1976 protest route",
-      "#FeesMustFall (2015) echoed Soweto's student activism"
-    ]
-  }
-];
-
-const TimelineSection = () => {
+export default function TimelineSection() {
+  const [viewMode, setViewMode] = useState("deck"); // "deck" (3D) or "stream" (List)
+  const [selectedPhase, setSelectedPhase] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeDeckIndex, setActiveDeckIndex] = useState(0);
   const [activeEvent, setActiveEvent] = useState(null);
 
-  return (
-    <section id="timeline" className="timeline-section">
-      <h2>✊ The Soweto Uprising: Timeline of Resistance</h2>
-      <p className="timeline-intro">
-        How student protests on June 16, 1976 changed South Africa forever.
-      </p>
+  const filteredEvents = useMemo(() => {
+    return timelineEvents.filter((item) => {
+      const matchesPhase =
+        selectedPhase === "all" || item.phase === selectedPhase;
 
-      <div className="timeline">
-        {timelineData.map((event, index) => (
-          <div 
-            key={index} 
-            className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
-            onClick={() => setActiveEvent(event)}
+      const q = searchQuery.toLowerCase().trim();
+      const matchesSearch =
+        !q ||
+        item.title.toLowerCase().includes(q) ||
+        (item.subtitle && item.subtitle.toLowerCase().includes(q)) ||
+        item.summary.toLowerCase().includes(q) ||
+        item.year.toLowerCase().includes(q) ||
+        (item.keyFigure && item.keyFigure.toLowerCase().includes(q)) ||
+        (item.location && item.location.toLowerCase().includes(q));
+
+      return matchesPhase && matchesSearch;
+    });
+  }, [selectedPhase, searchQuery]);
+
+  // Reset active deck index if filtered events change out of range
+  useEffect(() => {
+    if (activeDeckIndex >= filteredEvents.length) {
+      setActiveDeckIndex(0);
+    }
+  }, [filteredEvents.length, activeDeckIndex]);
+
+  return (
+    <section id="timeline" className="timeline-section-container">
+      <div className="timeline-header-area">
+        <span className="timeline-kicker">INTERACTIVE HISTORICAL CHRONOLOGY</span>
+        <h2 className="timeline-main-title">The Path to June 16: Timeline of Resistance</h2>
+        <p className="timeline-intro-text">
+          Navigate through the milestones of student defiance using our 3D perspective slideshow deck or switch to the documentary archival list. Each milestone features archival photographs, verified primary sources, and eyewitness accounts.
+        </p>
+
+        {/* View Mode Switcher */}
+        <div className="timeline-view-switcher">
+          <button
+            type="button"
+            className={`view-switch-btn ${viewMode === "deck" ? "active" : ""}`}
+            onClick={() => setViewMode("deck")}
           >
-            <div className="timeline-dot"></div>
-            <div className="timeline-content">
-              <span className="timeline-year">{event.year}</span>
-              <h3>{event.title}</h3>
-              <p>{event.description}</p>
-              <button className="timeline-button">View Details</button>
-            </div>
-          </div>
-        ))}
+            🏛️ 3D Perspective Slideshow
+          </button>
+          <button
+            type="button"
+            className={`view-switch-btn ${viewMode === "stream" ? "active" : ""}`}
+            onClick={() => setViewMode("stream")}
+          >
+            📜 Chronological Archival List
+          </button>
+        </div>
+
+        {/* Phase Filter Tabs */}
+        <div className="phase-filters-row">
+          {timelinePhases.map((phase) => (
+            <button
+              key={phase.id}
+              className={`phase-tab-btn ${selectedPhase === phase.id ? "active" : ""}`}
+              onClick={() => {
+                setSelectedPhase(phase.id);
+                setActiveDeckIndex(0);
+              }}
+            >
+              {phase.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Search Bar */}
+        <div className="timeline-search-box">
+          <input
+            type="text"
+            className="timeline-search-input"
+            placeholder="Search timeline (e.g. Morris Isaacson, Hector, Afrikaans, Tutu, DOCC)..."
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setActiveDeckIndex(0);
+            }}
+          />
+          {searchQuery && (
+            <button
+              className="timeline-search-clear"
+              onClick={() => {
+                setSearchQuery("");
+                setActiveDeckIndex(0);
+              }}
+            >
+              Clear
+            </button>
+          )}
+        </div>
       </div>
 
+      {filteredEvents.length === 0 ? (
+        <div className="timeline-empty-notice">
+          <p>No historical events matched your search. Try resetting the filters or clearing the search query.</p>
+          <button
+            className="timeline-reset-btn"
+            onClick={() => {
+              setSelectedPhase("all");
+              setSearchQuery("");
+              setActiveDeckIndex(0);
+            }}
+          >
+            Show All Events
+          </button>
+        </div>
+      ) : (
+        <>
+          {/* MODE 1: 3D SLIDESHOW PERSPECTIVE DECK + D3 TRACK */}
+          {viewMode === "deck" && (
+            <div className="timeline-deck-presentation-area">
+              {/* D3.js Interactive Timeline Scrubber */}
+              <TimelineD3Track
+                events={filteredEvents}
+                activeIndex={activeDeckIndex}
+                onSelectEvent={(idx) => setActiveDeckIndex(idx)}
+              />
+
+              {/* 3D Perspective Slideshow Stage */}
+              <Timeline3DDeck
+                events={filteredEvents}
+                activeIndex={activeDeckIndex}
+                onChangeIndex={setActiveDeckIndex}
+                onOpenModal={(event) => setActiveEvent(event)}
+              />
+            </div>
+          )}
+
+          {/* MODE 2: CHRONOLOGICAL STREAM / LIST */}
+          {viewMode === "stream" && (
+            <div className="timeline-stream">
+              {filteredEvents.map((event) => (
+                <article key={event.id} className="timeline-node">
+                  <div className="timeline-marker">
+                    <div className="timeline-pin"></div>
+                    <div className="timeline-spine"></div>
+                  </div>
+
+                  <div className="timeline-card">
+                    <div className="card-top-row">
+                      <div className="card-pill-group">
+                        <span className="card-year-tag">{event.year}</span>
+                        {event.date && event.date !== event.year && (
+                          <span className="card-date-tag">{event.date}</span>
+                        )}
+                        {event.location && (
+                          <span className="card-location-tag">📍 {event.location}</span>
+                        )}
+                      </div>
+                    </div>
+
+                    <h3 className="card-heading">{event.title}</h3>
+                    {event.subtitle && <p className="card-subheading">{event.subtitle}</p>}
+
+                    {/* Slideshow inside card */}
+                    {event.slides && event.slides.length > 0 && (
+                      <div className="card-slideshow-wrapper">
+                        <TimelineSlideshow slides={event.slides} />
+                      </div>
+                    )}
+
+                    <p className="card-summary">{event.summary}</p>
+
+                    {event.keyQuote && (
+                      <div className="card-quote-snippet">
+                        {event.keyQuote}
+                      </div>
+                    )}
+
+                    <div className="card-actions-row">
+                      <button
+                        className="card-details-btn"
+                        onClick={() => setActiveEvent(event)}
+                      >
+                        View In-Depth Archive & Slides ({event.slides ? event.slides.length : 0}) →
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </>
+      )}
+
+      {/* In-Depth Historical Modal */}
       {activeEvent && (
-        <TimelineModal 
-          event={activeEvent} 
-          onClose={() => setActiveEvent(null)} 
+        <TimelineModal
+          event={activeEvent}
+          onClose={() => setActiveEvent(null)}
         />
       )}
     </section>
   );
-};
-
-export default TimelineSection;
+}
