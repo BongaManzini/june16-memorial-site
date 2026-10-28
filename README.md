@@ -1,12 +1,12 @@
-# 🕯️ June 16 Soweto Memorial: Interactive 3D History Experience
+# ️ June 16 Soweto Memorial: Interactive 3D History Experience
 ### An Interactive 3D WebGL Memorial Honoring the 1976 Soweto Youth Uprising
 
-> **Live Memorial**: [https://bongamanzini.github.io/june16-memorial-site/](https://bongamanzini.github.io/june16-memorial-site/)  
+> **Live Memorial**: [https://bongamanzini.github.io/june16-memorial-site/](https://bongamanzini.github.io/june16-memorial-site/) 
 > **Built by**: Bonga Manzini (BSc Informatics student at UNISA)
 
 ---
 
-## 🔬 About This Project
+## About This Project
 
 June 16 is celebrated as Youth Day across South Africa, but many young people only see it as a day off from school without knowing what the students went through in 1976.
 
@@ -51,14 +51,14 @@ I built this 3D web experience using Three.js and WebGL so students can walk thr
 
 ---
 
-## 🛠️ Tech Stack
+## ️ Tech Stack
 - **React, Vite & TypeScript**
 - **Three.js / WebGL**
 - **Tailwind CSS**
 
 ---
 
-## 🤝 Contributing & Pull Requests
+## Contributing & Pull Requests
 
 Have historical photos, oral history audio recordings, or 3D model improvements?
 1. Fork this repository
